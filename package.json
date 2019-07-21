@@ -1,0 +1,26 @@
+{
+  "name": "wasm-pet",
+  "version": "0.2.0",
+  "description": "my pet proj with wasm and js",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node http.server.js",
+    "asbuild:untouched": "asc assembly/index.ts -b build/untouched.wasm -t build/untouched.wat --sourceMap --validate --debug",
+    "asbuild:optimized": "asc assembly/index.ts -b build/optimized.wasm -t build/optimized.wat --sourceMap --validate --optimize",
+    "asbuild": "npm run asbuild:untouched && npm run asbuild:optimized"
+  },
+  "keywords": [
+    "wasm",
+    "js"
+  ],
+  "author": "me",
+  "license": "MIT",
+  "devDependencies": {
+    "assemblyscript": "github:AssemblyScript/assemblyscript",
+    "express": "^4.17.1"
+  },
+  "dependencies": {
+    "http-server": "^0.11.1"
+  }
+}
