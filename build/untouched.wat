@@ -22,6 +22,8 @@
  (global $~lib/rt/pure/END (mut i32) (i32.const 0))
  (global $~lib/rt/pure/ROOTS (mut i32) (i32.const 0))
  (global $~lib/ASC_SHRINK_LEVEL i32 (i32.const 0))
+ (global $assembly/features/InverColor/BYTES_PER_PIXEL i32 (i32.const 4))
+ (global $assembly/features/GrayScale/BYTES_PER_PIXEL i32 (i32.const 4))
  (global $~lib/rt/__rtti_base i32 (i32.const 256))
  (global $~lib/heap/__heap_base i32 (i32.const 284))
  (export "memory" (memory $0))
@@ -30,7 +32,8 @@
  (export "__release" (func $~lib/rt/pure/__release))
  (export "__collect" (func $~lib/rt/pure/__collect))
  (export "__rtti_base" (global $~lib/rt/__rtti_base))
- (export "add" (func $assembly/index/add))
+ (export "invertColors" (func $assembly/features/InverColor/invertColors))
+ (export "grayScale" (func $assembly/features/GrayScale/grayScale))
  (func $~lib/rt/tlsf/removeBlock (; 1 ;) (type $FUNCSIG$vii) (param $0 i32) (param $1 i32)
   (local $2 i32)
   (local $3 i32)
@@ -3201,12 +3204,152 @@
   local.get $0
   global.set $~lib/rt/pure/CUR
  )
- (func $assembly/index/add (; 27 ;) (type $FUNCSIG$iii) (param $0 i32) (param $1 i32) (result i32)
+ (func $assembly/features/InverColor/invertColors (; 27 ;) (type $FUNCSIG$vii) (param $0 i32) (param $1 i32)
+  (local $2 i32)
+  (local $3 i32)
+  (local $4 i32)
   local.get $0
   local.get $1
-  i32.add
+  i32.mul
+  global.get $assembly/features/InverColor/BYTES_PER_PIXEL
+  i32.mul
+  local.set $2
+  block $break|0
+   i32.const 1
+   local.set $3
+   loop $loop|0
+    local.get $3
+    local.get $2
+    i32.lt_s
+    i32.eqz
+    br_if $break|0
+    local.get $3
+    i32.const 1
+    i32.sub
+    i32.load8_u
+    local.set $4
+    local.get $3
+    i32.const 4
+    i32.rem_s
+    i32.const 0
+    i32.ne
+    if
+     i32.const 255
+     local.get $4
+     i32.sub
+     local.set $4
+    end
+    local.get $2
+    local.get $3
+    i32.add
+    i32.const 1
+    i32.sub
+    local.get $4
+    i32.store8
+    local.get $3
+    i32.const 1
+    i32.add
+    local.set $3
+    br $loop|0
+   end
+   unreachable
+  end
  )
- (func $~lib/rt/pure/__visit (; 28 ;) (type $FUNCSIG$vii) (param $0 i32) (param $1 i32)
+ (func $assembly/features/GrayScale/grayScale (; 28 ;) (type $FUNCSIG$vii) (param $0 i32) (param $1 i32)
+  (local $2 i32)
+  (local $3 i32)
+  (local $4 i32)
+  (local $5 i32)
+  (local $6 i32)
+  (local $7 i32)
+  (local $8 f64)
+  local.get $0
+  local.get $1
+  i32.mul
+  global.get $assembly/features/GrayScale/BYTES_PER_PIXEL
+  i32.mul
+  local.set $2
+  block $break|0
+   i32.const 1
+   local.set $3
+   loop $loop|0
+    local.get $3
+    local.get $2
+    i32.lt_s
+    i32.eqz
+    br_if $break|0
+    local.get $3
+    i32.load8_u
+    local.set $4
+    local.get $3
+    i32.const 1
+    i32.add
+    i32.load8_u
+    local.set $5
+    local.get $3
+    i32.const 2
+    i32.add
+    i32.load8_u
+    local.set $6
+    local.get $3
+    i32.const 3
+    i32.add
+    i32.load8_u
+    local.set $7
+    local.get $4
+    f64.convert_i32_u
+    f64.const 0.2126
+    f64.mul
+    local.get $5
+    f64.convert_i32_u
+    f64.const 0.7152
+    f64.mul
+    f64.add
+    local.get $6
+    f64.convert_i32_u
+    f64.const 0.0722
+    f64.mul
+    f64.add
+    local.set $8
+    local.get $2
+    local.get $3
+    i32.add
+    local.get $8
+    i32.trunc_f64_u
+    i32.store8
+    local.get $2
+    local.get $3
+    i32.add
+    i32.const 1
+    i32.add
+    local.get $8
+    i32.trunc_f64_u
+    i32.store8
+    local.get $2
+    local.get $3
+    i32.add
+    i32.const 2
+    i32.add
+    local.get $8
+    i32.trunc_f64_u
+    i32.store8
+    local.get $2
+    local.get $3
+    i32.add
+    i32.const 3
+    i32.add
+    local.get $7
+    i32.store8
+    local.get $3
+    i32.const 4
+    i32.add
+    local.set $3
+    br $loop|0
+   end
+   unreachable
+  end
+ )
+ (func $~lib/rt/pure/__visit (; 29 ;) (type $FUNCSIG$vii) (param $0 i32) (param $1 i32)
   (local $2 i32)
   (local $3 i32)
   local.get $0
@@ -3336,7 +3479,7 @@
    end
   end
  )
- (func $~lib/rt/__visit_members (; 29 ;) (type $FUNCSIG$vii) (param $0 i32) (param $1 i32)
+ (func $~lib/rt/__visit_members (; 30 ;) (type $FUNCSIG$vii) (param $0 i32) (param $1 i32)
   (local $2 i32)
   block $switch$1$default
    block $switch$1$case$4
@@ -3361,6 +3504,6 @@
   end
   unreachable
  )
- (func $null (; 30 ;) (type $FUNCSIG$v)
+ (func $null (; 31 ;) (type $FUNCSIG$v)
  )
 )

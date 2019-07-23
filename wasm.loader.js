@@ -53,6 +53,24 @@
                     ctx.putImageData(new ImageData(resultData,  img.width, img.height), 0, 0)
                     break;
                 }
+                case 'gray' : {
+                    instance.exports.grayScale(
+                        img.width,
+                        img.height
+                    )
+                    const resultData = new Uint8ClampedArray(
+                        memory.buffer,
+                        img.width * img.height * BYTES_PER_PIXEL,
+                        img.width * img.height * BYTES_PER_PIXEL,
+                    )
+
+                    ctx.putImageData(new ImageData(resultData,  img.width, img.height), 0, 0)
+                    break;
+                }
+                default : {
+                    ctx.putImageData(new ImageData(imageData.data,  img.width, img.height), 0, 0)
+                    break;
+                }
             }
         })
         
