@@ -58,8 +58,8 @@
                         ctx.putImageData(new ImageData(resultData,  img.width, img.height), 0, 0)
                         break;
                     }
-                    case 'gray' : {
-                        instance.exports.grayScale(
+                    case 'grey' : {
+                        instance.exports.greyScale(
                             img.width,
                             img.height
                         )
@@ -92,8 +92,7 @@
                     }
                 }
             }
-        })
-        
+        })    
     }
 
 
