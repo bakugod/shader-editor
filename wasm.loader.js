@@ -38,38 +38,58 @@
 
         filters.addEventListener('change', event => {
             console.log(event.target.value)
-            switch (event.target.value) {
-                case 'invert' : {
-                    instance.exports.invertColors(
-                        img.width,
-                        img.height
-                    )
-                    const resultData = new Uint8ClampedArray(
-                        memory.buffer,
-                        img.width * img.height * BYTES_PER_PIXEL,
-                        img.width * img.height * BYTES_PER_PIXEL,
-                    )
+            if(img.width === 0 || img.height === 0){
+                ctx.font = '32px serif';
+                ctx.fillText('Downoload image', 0, 50);
+            }
+            else{
+                switch (event.target.value) {
+                    case 'invert' : {
+                        instance.exports.invertColors(
+                            img.width,
+                            img.height
+                        )
+                        const resultData = new Uint8ClampedArray(
+                            memory.buffer,
+                            img.width * img.height * BYTES_PER_PIXEL,
+                            img.width * img.height * BYTES_PER_PIXEL,
+                        )
 
-                    ctx.putImageData(new ImageData(resultData,  img.width, img.height), 0, 0)
-                    break;
-                }
-                case 'gray' : {
-                    instance.exports.grayScale(
-                        img.width,
-                        img.height
-                    )
-                    const resultData = new Uint8ClampedArray(
-                        memory.buffer,
-                        img.width * img.height * BYTES_PER_PIXEL,
-                        img.width * img.height * BYTES_PER_PIXEL,
-                    )
+                        ctx.putImageData(new ImageData(resultData,  img.width, img.height), 0, 0)
+                        break;
+                    }
+                    case 'gray' : {
+                        instance.exports.grayScale(
+                            img.width,
+                            img.height
+                        )
+                        const resultData = new Uint8ClampedArray(
+                            memory.buffer,
+                            img.width * img.height * BYTES_PER_PIXEL,
+                            img.width * img.height * BYTES_PER_PIXEL,
+                        )
 
-                    ctx.putImageData(new ImageData(resultData,  img.width, img.height), 0, 0)
-                    break;
-                }
-                default : {
-                    ctx.putImageData(new ImageData(imageData.data,  img.width, img.height), 0, 0)
-                    break;
+                        ctx.putImageData(new ImageData(resultData,  img.width, img.height), 0, 0)
+                        break;
+                    }
+                    case 'lolicolor' : {
+                        instance.exports.loliColor(
+                            img.width,
+                            img.height
+                        )
+                        const resultData = new Uint8ClampedArray(
+                            memory.buffer,
+                            img.width * img.height * BYTES_PER_PIXEL,
+                            img.width * img.height * BYTES_PER_PIXEL,
+                        )
+
+                        ctx.putImageData(new ImageData(resultData,  img.width, img.height), 0, 0)
+                        break;
+                    }
+                    default : {
+                        ctx.putImageData(new ImageData(imageData.data,  img.width, img.height), 0, 0)
+                        break;
+                    }
                 }
             }
         })

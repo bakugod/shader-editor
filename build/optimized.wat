@@ -27,6 +27,7 @@
  (export "__rtti_base" (global $~lib/rt/__rtti_base))
  (export "invertColors" (func $assembly/features/InverColor/invertColors))
  (export "grayScale" (func $assembly/features/GrayScale/grayScale))
+ (export "loliColor" (func $assembly/features/LoliColor/loliColor))
  (func $~lib/rt/tlsf/removeBlock (; 1 ;) (type $FUNCSIG$vii) (param $0 i32) (param $1 i32)
   (local $2 i32)
   (local $3 i32)
@@ -1781,6 +1782,105 @@
  )
  (func $assembly/features/GrayScale/grayScale (; 27 ;) (type $FUNCSIG$vii) (param $0 i32) (param $1 i32)
   (local $2 i32)
+  (local $3 i32)
+  (local $4 i32)
+  (local $5 i32)
+  (local $6 f64)
+  (local $7 i32)
+  (local $8 i32)
+  local.get $0
+  local.get $1
+  i32.mul
+  i32.const 2
+  i32.shl
+  local.set $7
+  loop $loop|0
+   block $break|0
+    local.get $2
+    local.get $1
+    i32.ge_s
+    br_if $break|0
+    i32.const 0
+    local.set $3
+    loop $loop|1
+     block $break|1
+      local.get $3
+      local.get $0
+      i32.ge_s
+      br_if $break|1
+      local.get $2
+      i32.const 2
+      i32.shl
+      local.get $0
+      i32.mul
+      local.get $3
+      i32.const 2
+      i32.shl
+      i32.add
+      local.tee $4
+      i32.const 3
+      i32.add
+      i32.load8_u
+      local.set $8
+      local.get $4
+      local.get $7
+      i32.add
+      local.tee $5
+      local.get $4
+      i32.load8_u
+      local.get $4
+      i32.const 1
+      i32.add
+      i32.load8_u
+      i32.add
+      f64.convert_i32_u
+      local.get $4
+      i32.const 2
+      i32.add
+      i32.load8_u
+      f64.convert_i32_u
+      f64.const 0.0722
+      f64.mul
+      f64.add
+      f64.const 2.5
+      f64.div
+      local.tee $6
+      i32.trunc_f64_u
+      i32.store8
+      local.get $5
+      i32.const 1
+      i32.add
+      local.get $6
+      i32.trunc_f64_u
+      i32.store8
+      local.get $5
+      i32.const 2
+      i32.add
+      local.get $6
+      i32.trunc_f64_u
+      i32.store8
+      local.get $5
+      i32.const 3
+      i32.add
+      local.get $8
+      i32.store8
+      local.get $3
+      i32.const 1
+      i32.add
+      local.set $3
+      br $loop|1
+     end
+    end
+    local.get $2
+    i32.const 1
+    i32.add
+    local.set $2
+    br $loop|0
+   end
+  end
+ )
+ (func $assembly/features/LoliColor/loliColor (; 28 ;) (type $FUNCSIG$vii) (param $0 i32) (param $1 i32)
+  (local $2 i32)
   (local $3 f64)
   (local $4 i32)
   local.get $0
@@ -1855,7 +1955,7 @@
    end
   end
  )
- (func $~lib/rt/pure/__visit (; 28 ;) (type $FUNCSIG$vii) (param $0 i32) (param $1 i32)
+ (func $~lib/rt/pure/__visit (; 29 ;) (type $FUNCSIG$vii) (param $0 i32) (param $1 i32)
   local.get $0
   i32.const 284
   i32.lt_u
@@ -1965,7 +2065,7 @@
    unreachable
   end
  )
- (func $~lib/rt/__visit_members (; 29 ;) (type $FUNCSIG$vii) (param $0 i32) (param $1 i32)
+ (func $~lib/rt/__visit_members (; 30 ;) (type $FUNCSIG$vii) (param $0 i32) (param $1 i32)
   block $switch$1$default
    block $switch$1$case$4
     block $switch$1$case$2
@@ -1989,7 +2089,7 @@
   end
   unreachable
  )
- (func $null (; 30 ;) (type $FUNCSIG$v)
+ (func $null (; 31 ;) (type $FUNCSIG$v)
   nop
  )
 )
