@@ -25,8 +25,8 @@
  (export "__release" (func $~lib/rt/pure/__release))
  (export "__collect" (func $~lib/rt/pure/__collect))
  (export "__rtti_base" (global $~lib/rt/__rtti_base))
- (export "invertColors" (func $assembly/features/InverColor/invertColors))
- (export "grayScale" (func $assembly/features/GrayScale/grayScale))
+ (export "invertColors" (func $assembly/features/InvertColor/invertColors))
+ (export "greyScale" (func $assembly/features/GreyScale/greyScale))
  (export "loliColor" (func $assembly/features/LoliColor/loliColor))
  (func $~lib/rt/tlsf/removeBlock (; 1 ;) (type $FUNCSIG$vii) (param $0 i32) (param $1 i32)
   (local $2 i32)
@@ -1735,7 +1735,7 @@
   local.get $5
   global.set $~lib/rt/pure/CUR
  )
- (func $assembly/features/InverColor/invertColors (; 26 ;) (type $FUNCSIG$vii) (param $0 i32) (param $1 i32)
+ (func $assembly/features/InvertColor/invertColors (; 26 ;) (type $FUNCSIG$vii) (param $0 i32) (param $1 i32)
   (local $2 i32)
   local.get $0
   local.get $1
@@ -1780,7 +1780,7 @@
    end
   end
  )
- (func $assembly/features/GrayScale/grayScale (; 27 ;) (type $FUNCSIG$vii) (param $0 i32) (param $1 i32)
+ (func $assembly/features/GreyScale/greyScale (; 27 ;) (type $FUNCSIG$vii) (param $0 i32) (param $1 i32)
   (local $2 i32)
   (local $3 i32)
   (local $4 i32)
