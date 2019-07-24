@@ -6,26 +6,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Shader editor wwwowow</title>
+    <link rel="stylesheet" href="./src/global.css">
 </head>
 <body>
     <header>
         <h1>Shader editor</h1>
     </header>
-    <main>
+    <main class="contorls-wraper">
         <section>
-            <article>
+            <article class="controls">
                 <input type="file" id="uploader">
+                <label for="uploader">Downoload</label>
                 <div id="filters">
-                    <input type="radio" name="gay" value="invert"><span>invert</span></input>
-                    <input type="radio" name="gay" value="gray"><span>gray scale</span></input>
-                    <input type="radio" name="gay" value="lolicolor"><span>Something culll</span></input>
-                    <input type="radio" name="gay" value="default"><span>reset</span></input>
+                    <input type="radio" name="gay" id="1" value="invert" />
+                    <label for="1">Invert</label>
+                    <input type="radio" name="gay" id="2" value="grey" />
+                    <label for="2">Decolorize</label>
+                    <input type="radio" name="gay" id="3" value="lolicolor" />
+                    <label for="3">Any effect</label>
+                    <input type="radio" name="gay" id="4" value="default" />
+                    <label for="4">Reset</label>
                 </div>
 
             </article>
         </section>
     </main>
-    <canvas style="max-height: 500px" id="canvas"></canvas>    
+    <section class="image-wraper">
+        <canvas id="canvas"></canvas>
+    </section>
     <script src="./wasm.loader.js"></script>
 </body>
 </html>
