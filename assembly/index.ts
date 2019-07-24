@@ -1,10 +1,10 @@
-import { invertColors } from './features/InverColor';
-import { grayScale } from './features/GrayScale'
+import { invertColors } from './features/InvertColor';
+import { greyScale } from './features/GreyScale'
 import { loliColor } from './features/LoliColor'
 
 export {
 	invertColors,
-	grayScale,
+	greyScale,
 	loliColor,
 };
 
