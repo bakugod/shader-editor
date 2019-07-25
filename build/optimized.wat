@@ -29,6 +29,8 @@
  (export "greyScale" (func $assembly/features/GreyScale/greyScale))
  (export "loliColor" (func $assembly/features/LoliColor/loliColor))
  (export "sepiaColors" (func $assembly/features/SepiaColor/sepiaColors))
+ (export "blueColors" (func $assembly/features/BlueColors/blueColors))
+ (export "blurFilter" (func $assembly/features/BlurFilter/blurFilter))
  (func $~lib/rt/tlsf/removeBlock (; 1 ;) (type $FUNCSIG$vii) (param $0 i32) (param $1 i32)
   (local $2 i32)
   (local $3 i32)
@@ -2087,7 +2089,231 @@
    end
   end
  )
- (func $~lib/rt/pure/__visit (; 30 ;) (type $FUNCSIG$vii) (param $0 i32) (param $1 i32)
+ (func $assembly/features/BlueColors/blueColors (; 30 ;) (type $FUNCSIG$vii) (param $0 i32) (param $1 i32)
+  (local $2 i32)
+  (local $3 i32)
+  (local $4 i32)
+  (local $5 i32)
+  (local $6 i32)
+  (local $7 i32)
+  (local $8 i32)
+  (local $9 i32)
+  local.get $0
+  local.get $1
+  i32.mul
+  i32.const 2
+  i32.shl
+  local.set $8
+  loop $loop|0
+   block $break|0
+    local.get $3
+    local.get $1
+    i32.ge_s
+    br_if $break|0
+    i32.const 0
+    local.set $4
+    loop $loop|1
+     block $break|1
+      local.get $4
+      local.get $0
+      i32.ge_s
+      br_if $break|1
+      local.get $3
+      i32.const 2
+      i32.shl
+      local.get $0
+      i32.mul
+      local.get $4
+      i32.const 2
+      i32.shl
+      i32.add
+      local.tee $2
+      i32.const 3
+      i32.add
+      i32.load8_u
+      local.set $9
+      local.get $2
+      local.get $8
+      i32.add
+      local.tee $5
+      local.get $2
+      i32.load8_u
+      local.tee $6
+      f64.convert_i32_u
+      f64.const 0.272
+      f64.mul
+      local.get $2
+      i32.const 1
+      i32.add
+      i32.load8_u
+      local.tee $7
+      f64.convert_i32_u
+      f64.const 0.354
+      f64.mul
+      f64.add
+      local.get $2
+      i32.const 2
+      i32.add
+      i32.load8_u
+      local.tee $2
+      f64.convert_i32_u
+      f64.const 0.0031
+      f64.mul
+      f64.add
+      i32.trunc_f64_u
+      i32.store8
+      local.get $5
+      i32.const 1
+      i32.add
+      local.get $6
+      f64.convert_i32_u
+      f64.const 0.349
+      f64.mul
+      local.get $7
+      f64.convert_i32_u
+      f64.const 0.386
+      f64.mul
+      f64.add
+      local.get $2
+      f64.convert_i32_u
+      f64.const 0.0268
+      f64.mul
+      f64.add
+      i32.trunc_f64_u
+      i32.store8
+      local.get $5
+      i32.const 2
+      i32.add
+      local.get $6
+      f64.convert_i32_u
+      f64.const 0.393
+      f64.mul
+      local.get $7
+      f64.convert_i32_u
+      f64.const 0.469
+      f64.mul
+      f64.add
+      local.get $2
+      f64.convert_i32_u
+      f64.const 0.0389
+      f64.mul
+      f64.add
+      i32.trunc_f64_u
+      i32.store8
+      local.get $5
+      i32.const 3
+      i32.add
+      local.get $9
+      i32.store8
+      local.get $4
+      i32.const 1
+      i32.add
+      local.set $4
+      br $loop|1
+     end
+    end
+    local.get $3
+    i32.const 1
+    i32.add
+    local.set $3
+    br $loop|0
+   end
+  end
+ )
+ (func $assembly/features/BlurFilter/blurFilter (; 31 ;) (type $FUNCSIG$vii) (param $0 i32) (param $1 i32)
+  (local $2 i32)
+  (local $3 i32)
+  (local $4 i32)
+  (local $5 i32)
+  (local $6 i32)
+  local.get $0
+  local.get $1
+  i32.mul
+  i32.const 2
+  i32.shl
+  local.set $6
+  loop $loop|0
+   block $break|0
+    local.get $3
+    local.get $1
+    i32.ge_s
+    br_if $break|0
+    i32.const 0
+    local.set $4
+    loop $loop|1
+     block $break|1
+      local.get $4
+      local.get $0
+      i32.ge_s
+      br_if $break|1
+      local.get $3
+      i32.const 2
+      i32.shl
+      local.get $0
+      i32.mul
+      local.get $4
+      i32.const 2
+      i32.shl
+      i32.add
+      local.tee $2
+      i32.load8_u
+      drop
+      local.get $2
+      i32.const 1
+      i32.add
+      i32.load8_u
+      drop
+      local.get $2
+      i32.const 2
+      i32.add
+      i32.load8_u
+      drop
+      local.get $2
+      i32.const 3
+      i32.add
+      i32.load8_u
+      drop
+      local.get $2
+      local.get $6
+      i32.add
+      local.tee $5
+      local.get $2
+      i32.load
+      i32.store8
+      local.get $5
+      i32.const 1
+      i32.add
+      local.get $2
+      i32.load
+      i32.store8
+      local.get $5
+      i32.const 2
+      i32.add
+      local.get $2
+      i32.load
+      i32.store8
+      local.get $5
+      i32.const 3
+      i32.add
+      local.get $2
+      i32.load
+      i32.store8
+      local.get $4
+      i32.const 1
+      i32.add
+      local.set $4
+      br $loop|1
+     end
+    end
+    local.get $3
+    i32.const 1
+    i32.add
+    local.set $3
+    br $loop|0
+   end
+  end
+ )
+ (func $~lib/rt/pure/__visit (; 32 ;) (type $FUNCSIG$vii) (param $0 i32) (param $1 i32)
   local.get $0
   i32.const 284
   i32.lt_u
@@ -2197,7 +2423,7 @@
    unreachable
   end
  )
- (func $~lib/rt/__visit_members (; 31 ;) (type $FUNCSIG$vii) (param $0 i32) (param $1 i32)
+ (func $~lib/rt/__visit_members (; 33 ;) (type $FUNCSIG$vii) (param $0 i32) (param $1 i32)
   block $switch$1$default
    block $switch$1$case$4
     block $switch$1$case$2
@@ -2221,7 +2447,7 @@
   end
   unreachable
  )
- (func $null (; 32 ;) (type $FUNCSIG$v)
+ (func $null (; 34 ;) (type $FUNCSIG$v)
   nop
  )
 )
