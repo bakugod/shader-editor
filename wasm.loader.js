@@ -72,6 +72,20 @@
                         ctx.putImageData(new ImageData(resultData,  img.width, img.height), 0, 0)
                         break;
                     }
+                    case 'sepia' : {
+                        instance.exports.sepiaColors(
+                            img.width,
+                            img.height
+                        )
+                        const resultData = new Uint8ClampedArray(
+                            memory.buffer,
+                            img.width * img.height * BYTES_PER_PIXEL,
+                            img.width * img.height * BYTES_PER_PIXEL,
+                        )
+
+                        ctx.putImageData(new ImageData(resultData,  img.width, img.height), 0, 0)
+                        break;
+                    }
                     case 'lolicolor' : {
                         instance.exports.loliColor(
                             img.width,
