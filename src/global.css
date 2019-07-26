@@ -29,10 +29,11 @@ input[type="file"] ~ label {
 
 .controls{
     display: grid;
+    max-width: 722px;
 }
 
 canvas{
-    max-height: 500px;
+    max-width: 722px;
 }
 
 #filters{
