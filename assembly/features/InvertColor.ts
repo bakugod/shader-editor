@@ -11,7 +11,6 @@ function invertColors(width: i32, height: i32): void {
 		}
 
 		store<u8>(offset + i - 1, currentByte)
-		
 	}
 }
 

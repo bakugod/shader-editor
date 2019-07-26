@@ -8,9 +8,8 @@ function loliColor(width: i32, height: i32): void {
         let red = load<u8>(i);
         let green = load<u8>(i + 1);
         let blue = load<u8>(i + 2);
-        let alpha = load<u8>(i + 3);
-
-	    //let luma = (red * 0.299) + (green * 0.587) + (blue * 0.114);
+		let alpha = load<u8>(i + 3);
+		
 	    let luma = (red * 0.2126) + (green * 0.7152) + (blue * 0.0722);
 
 	    store<u8>(offset + i, <u8>luma)

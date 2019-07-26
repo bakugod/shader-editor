@@ -17,12 +17,6 @@ function blurFilter(width: i32, height: i32): void {
             store<u8>(offset + i + 1, load<u32>(i))
             store<u8>(offset + i + 2, load<u32>(i))
             store<u8>(offset + i + 3, load<u32>(i))
-
-
-            // store<u8>(offset + i, <u8>green)
-            // store<u8>(offset + i + 1, <u8>red)
-            // store<u8>(offset + i + 2, <u8>blue)
-            // store<u8>(offset + i + 3, alpha)
         }
     }
 }

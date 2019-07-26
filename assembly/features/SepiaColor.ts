@@ -13,8 +13,6 @@ function sepiaColors(width: i32, height: i32): void {
             let blue = load<u8>(i + 2);
             let alpha = load<u8>(i + 3);
 
-            let avg = (red + green + blue * 0.0722) / 2.5;
-
             let oRed = (red * .393) + (green * .469) + (blue * .0389);
             let oGreen = (red * .349) + (green * .386) + (blue * .0268);
             let oBlue = (red * .272) + (green * .354) + (blue * .0031);
