@@ -8,10 +8,11 @@
     const filters = document.getElementById('filters')
 
 
-    const hookedFilters = (functionName, img, memory) => {
+    const hookedFilters = (functionName, img, memory, ...args) => {
         functionName(
             img.width,
-            img.height
+            img.height,
+            args
         )
         const resultData = new Uint8ClampedArray(
             memory.buffer,
@@ -54,35 +55,39 @@
         });
 
         filters.addEventListener('change', event => {
-            console.log(event.target.value)
             if (img.width === 0 || img.height === 0) {
                 ctx.font = '32px serif';
                 ctx.fillText('Downoload image', 0, 50);
             }
             else {
-                switch (event.target.value) {
-                    case 'invert': {
+                switch (event.target.id) {
+                    case '1': {
                         hookedFilters(instance.exports.invertColors, img, memory)
                         break;
                     }
-                    case 'grey': {
+                    case '2': {
                         hookedFilters(instance.exports.greyScale, img, memory)
                         break;
                     }
-                    case 'sepia': {
-                        hookedFilters(instance.exports.sepiaColors, img, memory)
-                        break;
-                    }
-                    case 'blue': {
-                        hookedFilters(instance.exports.blueColors, img, memory)
-                        break;
-                    }
-                    case 'lolicolor': {
+                    case '3': {
                         hookedFilters(instance.exports.loliColor, img, memory)
                         break;
                     }
-                    case 'blur': {
-                        hookedFilters(instance.exports.blurFilter, img, memory)
+                    case '4': {
+                        hookedFilters(instance.exports.sepiaColors, img, memory)
+                        break;
+                    }
+                    case '5': {
+                        hookedFilters(instance.exports.blueColors, img, memory)
+                        break;
+                    }
+                    case '6': {
+                        ctx.putImageData(new ImageData(imageData.data, img.width, img.height), 0, 0)
+                        break;
+                    }
+                    case '7': {
+                        console.log(event.target.value)
+                        hookedFilters(instance.exports.contrastRange, img, memory, event.target.value)
                         break;
                     }
                     default: {
