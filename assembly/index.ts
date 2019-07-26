@@ -4,7 +4,7 @@ import { loliColor } from './features/LoliColor'
 import { sepiaColors } from './features/SepiaColor'
 import { blueColors } from './features/BlueColors'
 import { blurFilter } from './features/BlurFilter'
-
+import { contrastRange } from './features/СontrastRange'
 
 
 export {
@@ -14,4 +14,5 @@ export {
 	sepiaColors,
 	blueColors,
 	blurFilter,
+	contrastRange,
 };
