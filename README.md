@@ -6,10 +6,12 @@ __TODO__:
   <li>blue :full_moon:</li>
   <li>invert :full_moon:</li>
   <li>contrast range :waning_crescent_moon:</li>
-  <li>good architect :new_moon_with_face: :new_moon_with_face: :new_moon_with_face:</li>
   
   <li>blur :new_moon:</li>
   <li>white balance :new_moon:</li>
   <li>super resolution :new_moon:</li>
   <li>lossless compression :new_moon:</li>
+  
+  <li>good architect :new_moon_with_face: :new_moon_with_face: :new_moon_with_face:</li>
+  <li>precommit hook :new_moon_with_face: :new_moon_with_face: :new_moon_with_face:</li>
   
