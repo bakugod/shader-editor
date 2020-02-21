@@ -1,4 +1,4 @@
-# Online photo editor //closed for reconstruction
+# Online photo editor //closed
 
 __TODO__:
   <li>sepia :full_moon:</li>
